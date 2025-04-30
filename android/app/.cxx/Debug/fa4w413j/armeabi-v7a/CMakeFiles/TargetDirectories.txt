@@ -1,0 +1,2 @@
+C:/Users/Adriel/PROJECTS/loveliz/loveliz_app/android/app/.cxx/Debug/fa4w413j/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/Adriel/PROJECTS/loveliz/loveliz_app/android/app/.cxx/Debug/fa4w413j/armeabi-v7a/CMakeFiles/rebuild_cache.dir

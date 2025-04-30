@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "453393789802",
+    "project_id": "loveliz-65208",
+    "storage_bucket": "loveliz-65208.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:453393789802:android:ed7fc7449a472a526aeb13",
+        "android_client_info": {
+          "package_name": "br.com.adrielapps.loveliz_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUky7COFpsWPC4YN9MtT-kWe0e_2uckSA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:453393789802:android:c1436e36126a15876aeb13",
+        "android_client_info": {
+          "package_name": "com.loveliz.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUky7COFpsWPC4YN9MtT-kWe0e_2uckSA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
