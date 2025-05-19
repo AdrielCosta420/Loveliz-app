@@ -37,7 +37,6 @@ class _AddProductModalWidgetState extends State<AddProductModalWidget> {
 
   @override
   Widget build(BuildContext context) {
-    // Pega o tamanho da parte visível do teclado
     final double keyboardInset = MediaQuery.of(context).viewInsets.bottom;
 
     return AnimatedPadding(
@@ -52,6 +51,17 @@ class _AddProductModalWidgetState extends State<AddProductModalWidget> {
           key: productController.createProductForm,
           child: Column(
             children: [
+              Center(
+              child: Container(
+                width: 40,
+                height: 4,
+                margin: const EdgeInsets.only(bottom: 16),
+                decoration: BoxDecoration(
+                  color: Colors.grey[400],
+                  borderRadius: BorderRadius.circular(4),
+                ),
+              ),
+            ),
               Row(
                 children: [
                   Text(

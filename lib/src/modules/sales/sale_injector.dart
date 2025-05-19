@@ -5,6 +5,7 @@ import 'data/service/sale_service_impl.dart';
 import 'domain/repositories/sale_repository.dart';
 import 'domain/usecases/get_last_sales_uc.dart';
 import 'domain/usecases/get_sales_uc.dart';
+import 'domain/usecases/register_sale_uc.dart';
 import 'presentation/controllers/sale_controller.dart';
 
 sealed class SaleInjector {
@@ -14,5 +15,6 @@ sealed class SaleInjector {
     injector.registerLazySingleton<SaleService>(() => SaleServiceImpl());
     injector.registerLazySingleton<GetSalesUc>(() => GetSalesUcImpl());
     injector.registerLazySingleton<GetLastSalesUc>(() => GetLastSaleUcImpl());
+    injector.registerLazySingleton<RegisterSaleUc>(() => RegisterSaleUcImpl());
   }
 }

@@ -7,7 +7,7 @@ class DropdownButtonFormFieldWidget<T> extends StatelessWidget {
   final T? value;
   final String? labelText;
   final String? hintText;
-
+  final String? Function(T?)? validator;
   const DropdownButtonFormFieldWidget({
     super.key,
     required this.items,
@@ -15,6 +15,7 @@ class DropdownButtonFormFieldWidget<T> extends StatelessWidget {
     this.value,
     this.labelText,
     this.hintText,
+    this.validator,
   });
 
   @override
@@ -28,7 +29,8 @@ class DropdownButtonFormFieldWidget<T> extends StatelessWidget {
           fontWeight: FontWeight.w400,
           fontSize: 15,
         ),
-        items: items,
+        borderRadius: BorderRadius.circular(16),
+        items: items,validator: validator,
         onChanged: onChanged,
         decoration: InputDecoration(
           isDense: true,

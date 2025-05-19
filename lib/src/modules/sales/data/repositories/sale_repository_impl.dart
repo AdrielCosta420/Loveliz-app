@@ -31,7 +31,7 @@ class SaleRepositoryImpl implements SaleRepository {
   Future<Result<SaleError, Sale>> registerSale({required Sale sale}) async {
     try {
       final response = await service.registerSale(sale: sale.toMap());
-      return Result.success(Sale.fromMap(response.values as Map<String, dynamic>));
+      return Result.success(Sale.fromMap(response));
     } on SaleError catch (e) {
       return Result.failure(e);
     } catch (e) {

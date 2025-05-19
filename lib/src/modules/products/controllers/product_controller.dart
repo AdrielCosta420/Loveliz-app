@@ -14,6 +14,12 @@ class ProductController extends ChangeNotifier {
     notifyListeners();
   }
 
+  void resetProduct() {
+  product = Product.empty();
+  notifyListeners();
+}
+
+
   List<Product> products = [];
   void setProducts(List<Product> products) {
     this.products = products;

@@ -42,6 +42,17 @@ class _UpdateProductModalWidgetState extends State<UpdateProductModalWidget> {
           key: productController.updateProductForm,
           child: Column(
             children: [
+              Center(
+                child: Container(
+                  width: 40,
+                  height: 4,
+                  margin: const EdgeInsets.only(bottom: 16),
+                  decoration: BoxDecoration(
+                    color: Colors.grey[400],
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                ),
+              ),
               Row(
                 children: [
                   Text(

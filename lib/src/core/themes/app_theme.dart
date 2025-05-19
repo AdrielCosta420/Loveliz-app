@@ -114,28 +114,32 @@ sealed class AppTheme {
       ),
     ),
     inputDecorationTheme: InputDecorationTheme(
-      errorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(16),
-        borderSide: const BorderSide(color: Color(0xffF04D00), width: 1),
-      ),
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(16),
-        borderSide: const BorderSide(color: Color(0xFFB2BCC9), width: 1),
-      ),
-      disabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(16),
-        borderSide: const BorderSide(width: 1, color: Color(0xffF4F4F6)),
-      ),
-      enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(16),
-        borderSide: const BorderSide(width: 1, color: Color(0xffF4F4F6)),
-      ),
-      focusColor: const Color(0xffFAFAFC),
-      focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(16),
-        borderSide: const BorderSide(width: 1, color: Color(0xFFA6767A)),
-      ),
-    ),
+     errorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: const BorderSide(color: Color(0xffF04D00), width: 1),
+          ),
+          focusedErrorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: const BorderSide(color: Color(0xffF04D00), width: 1),
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: const BorderSide(color: Color(0xFFB2BCC9), width: 1),
+          ),
+          disabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: const BorderSide(width: 1, color: Color(0xffF4F4F6)),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: const BorderSide(width: 1, color: Color(0xffF4F4F6)),
+          ),
+          focusColor: const Color(0xffFAFAFC),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: const BorderSide(width: 1, color: Color(0xFFA6767A)),
+          ),
+        ),
   );
 
   static ThemeData darkTheme = ThemeData(

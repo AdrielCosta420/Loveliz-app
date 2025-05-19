@@ -6,11 +6,11 @@ import '../../modules/user/presentation/controllers/user_controller.dart';
 
 class AppBarMainWidget extends StatefulWidget implements PreferredSizeWidget {
   final String pageName;
-  final String title;
+
   const AppBarMainWidget({
     super.key,
     required this.pageName,
-    required this.title,
+    
   });
 
   @override

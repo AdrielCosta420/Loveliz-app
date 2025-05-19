@@ -57,7 +57,7 @@ class _SalesLastWidgetState extends State<SalesLastWidget> {
                           children: [
                             Text.rich(
                               TextSpan(
-                                text: sale.product.model,
+                                text: sale.product?.model,
                                 style: Theme.of(context).textTheme.bodyMedium
                                     ?.copyWith(fontWeight: FontWeight.bold),
                                 children: [

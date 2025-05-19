@@ -14,6 +14,13 @@ class SaleController extends ChangeNotifier {
     notifyListeners();
   }
 
+  void resetSale() {
+    sale = Sale.empty();
+    notifyListeners();
+  }
+
+  GlobalKey<FormState> registerSaleFormKey = GlobalKey<FormState>();
+
   List<Sale> sales = [];
   void setSales(List<Sale> sales) {
     this.sales = sales;

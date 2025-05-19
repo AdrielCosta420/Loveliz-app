@@ -5,7 +5,6 @@ import '../../modules/products/presentation/pages/collections_product_page.dart'
 import '../../modules/products/presentation/pages/products_page.dart';
 import '../../splash_page.dart';
 
-import '../../modules/sales/presentation/pages/register_sale_page.dart';
 
 sealed class AppRoutes {
   static const splash = '/';
@@ -21,7 +20,7 @@ sealed class AppRoutes {
       login: (context) => const LoginPage(),
       collectionsProduct: (context) => const CollectionsProductPage(),
       products: (context) => const ProductsPage(),
-      registerSale: (context) => const RegisterSalePage(),
+   
     };
   }
 }
