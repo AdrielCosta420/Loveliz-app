@@ -2,7 +2,7 @@ import 'dart:developer';
 
 
 import '../../../../injectable.dart';
-import '../../ui/controllers/sale_controller.dart';
+import '../../presentation/controllers/sale_controller.dart';
 import '../repositories/sale_repository.dart';
 
 abstract interface class GetSalesUc {

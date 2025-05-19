@@ -1,8 +1,8 @@
-import 'package:loveliz_app/src/common/result/result.dart';
+import '../../../../common/result/result.dart';
 
-import 'package:loveliz_app/src/modules/sales/domain/errors/sale_error.dart';
+import '../../domain/errors/sale_error.dart';
 
-import 'package:loveliz_app/src/modules/sales/domain/models/sale.dart';
+import '../../domain/models/sale.dart';
 
 import '../../../../injectable.dart';
 import '../../domain/repositories/sale_repository.dart';
@@ -40,10 +40,14 @@ class SaleRepositoryImpl implements SaleRepository {
   }
   
   @override
-  Future<Result<SaleError, Sale>> getLastSale() async {
+  Future<Result<SaleError, List<Sale>>> getLastSales() async {
     try {
-      final response = await service.getLastSale();
-      return Result.success(Sale.fromMap(response));
+      final response = await service.getLastSales();
+      final List<Sale> sales = [];
+      for (var sale in response) {
+        sales.add(Sale.fromMap(sale));
+      }
+      return Result.success(sales);
     } on SaleError catch (e) {
       return Result.failure(e);
     } catch (e) {

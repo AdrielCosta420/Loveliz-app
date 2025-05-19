@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TextFormFieldWidget extends StatelessWidget {
@@ -9,6 +10,8 @@ class TextFormFieldWidget extends StatelessWidget {
   final String? hintText;
   final TextInputType? keyboardType;
   final Widget? suffix;
+  final Widget? prefixIcon;
+  final List<TextInputFormatter>? inputFormatters;
   const TextFormFieldWidget({
     super.key,
     required this.onChanged,
@@ -18,6 +21,8 @@ class TextFormFieldWidget extends StatelessWidget {
     this.hintText,
     this.keyboardType,
     this.suffix,
+    this.prefixIcon,
+    this.inputFormatters,
   });
 
   @override
@@ -39,7 +44,7 @@ class TextFormFieldWidget extends StatelessWidget {
           fontSize: 15,
         ),
         keyboardType: keyboardType,
-        textAlignVertical: TextAlignVertical.center,
+        textAlignVertical: TextAlignVertical.center,inputFormatters: inputFormatters,
         decoration: InputDecoration(
           isDense: true,
           contentPadding: const EdgeInsets.only(
@@ -54,6 +59,7 @@ class TextFormFieldWidget extends StatelessWidget {
             fontWeight: FontWeight.w400,
             fontSize: 16,
           ),
+          prefixIcon: prefixIcon,
           hintStyle: const TextStyle(
             color: Color(0xffB2BCC9),
             fontWeight: FontWeight.w400,
@@ -86,7 +92,7 @@ class TextFormFieldWidget extends StatelessWidget {
           focusColor: const Color(0xffFAFAFC),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(16),
-            borderSide: const BorderSide(width: 1, color: Color(0xff3FADEB)),
+            borderSide: const BorderSide(width: 1, color: Color(0xFFA6767A)),
           ),
         ),
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 sealed class AppTheme {
@@ -48,14 +49,33 @@ sealed class AppTheme {
       indent: 0,
     ),
     appBarTheme: const AppBarTheme(
-      backgroundColor: Colors.transparent,
-      foregroundColor: Colors.white,
+      systemOverlayStyle: SystemUiOverlayStyle(
+        statusBarColor: Color(0xFFA6767A),
+        statusBarBrightness: Brightness.dark,
+        statusBarIconBrightness: Brightness.light,
+      ),
+      titleTextStyle: TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w600,
+        color: Colors.white,
+      ),
+      iconTheme: IconThemeData(color: Color(0xFFD9D9D9)),
+      backgroundColor: Color(0xFFA6767A),
+      
       actionsIconTheme: IconThemeData(color: Color(0xFFD9D9D9)),
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      backgroundColor: Color(0xFFA6767A),
-      selectedItemColor: Color(0xffd9c9ba),
-      unselectedItemColor: Color(0xffffeef2),
+      backgroundColor: Color(0xB3A6767A),
+      selectedItemColor: Colors.white,
+      // unselectedItemColor: Color(0xffffeef2),
+      unselectedItemColor: Color(0xFFEEEFF2), // Mais suave
+      selectedIconTheme: IconThemeData(size: 28), // Ícone maior no selecionado
+      unselectedIconTheme: IconThemeData(size: 22), // Ícone menor nos demais
+      selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+      unselectedLabelStyle: TextStyle(
+        fontWeight: FontWeight.normal,
+        fontSize: 12,
+      ),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
@@ -94,43 +114,28 @@ sealed class AppTheme {
       ),
     ),
     inputDecorationTheme: InputDecorationTheme(
-        errorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(16),
-            borderSide: const BorderSide(
-              color: Color(0xffF04D00),
-              width: 1,
-            ),
-          ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(16),
-            borderSide: const BorderSide(
-              color: Color(0xFFB2BCC9),
-              width: 1,
-            ),
-          ),
-          disabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(16),
-            borderSide: const BorderSide(
-              width: 1,
-              color: Color(0xffF4F4F6),
-            ),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(16),
-            borderSide: const BorderSide(
-              width: 1,
-              color: Color(0xffF4F4F6),
-            ),
-          ),
-          focusColor: const Color(0xffFAFAFC),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(16),
-            borderSide: const BorderSide(
-              width: 1,
-              color: Color(0xff3FADEB),
-            ),
-          ),
-    )
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: const BorderSide(color: Color(0xffF04D00), width: 1),
+      ),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: const BorderSide(color: Color(0xFFB2BCC9), width: 1),
+      ),
+      disabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: const BorderSide(width: 1, color: Color(0xffF4F4F6)),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: const BorderSide(width: 1, color: Color(0xffF4F4F6)),
+      ),
+      focusColor: const Color(0xffFAFAFC),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: const BorderSide(width: 1, color: Color(0xFFA6767A)),
+      ),
+    ),
   );
 
   static ThemeData darkTheme = ThemeData(
@@ -163,13 +168,28 @@ sealed class AppTheme {
       ),
     ),
     appBarTheme: const AppBarTheme(
-      backgroundColor: Color(0xFFA6767A),
-      foregroundColor: Colors.white,
-    ),
+      systemOverlayStyle: SystemUiOverlayStyle(
+        statusBarColor: Color(0xFFA6767A),
+        statusBarBrightness: Brightness.dark,
+        statusBarIconBrightness: Brightness.light,
+      ),
+      titleTextStyle: TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w600,
+        color: Colors.white,
+      ),),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      backgroundColor: Color(0xFFA6767A),
+      backgroundColor: Color(0xB3A6767A),
       selectedItemColor: Colors.white,
-      unselectedItemColor: Color(0xffffeef2),
+      // unselectedItemColor: Color(0xffffeef2),
+      unselectedItemColor: Color(0xFFEEEFF2), // Mais suave
+      selectedIconTheme: IconThemeData(size: 28), // Ícone maior no selecionado
+      unselectedIconTheme: IconThemeData(size: 22), // Ícone menor nos demais
+      selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+      unselectedLabelStyle: TextStyle(
+        fontWeight: FontWeight.normal,
+        fontSize: 12,
+      ),
     ),
     cardTheme: const CardTheme(
       color: Color(0xFF333333),

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class AppBarMainWidget extends StatelessWidget implements PreferredSizeWidget {
+import '../../injectable.dart';
+import '../../modules/user/presentation/controllers/user_controller.dart';
+
+class AppBarMainWidget extends StatefulWidget implements PreferredSizeWidget {
   final String pageName;
   final String title;
   const AppBarMainWidget({
@@ -10,6 +13,15 @@ class AppBarMainWidget extends StatelessWidget implements PreferredSizeWidget {
     required this.title,
   });
 
+  @override
+  State<AppBarMainWidget> createState() => _AppBarMainWidgetState();
+
+  @override
+  Size get preferredSize => const Size.fromHeight(85);
+}
+
+class _AppBarMainWidgetState extends State<AppBarMainWidget> {
+  final UserController userController = injector.get();
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -22,16 +34,21 @@ class AppBarMainWidget extends StatelessWidget implements PreferredSizeWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              pageName,
+              widget.pageName,
               style: Theme.of(
                 context,
               ).textTheme.bodySmall?.copyWith(color: const Color(0xffd9c9ba)),
             ),
-            Text(
-              title,
-              style: Theme.of(
-                context,
-              ).textTheme.bodyLarge?.copyWith(color: const Color(0xffffffff)),
+            ListenableBuilder(
+              listenable: userController,
+              builder: (_, __) {
+                return Text(
+                  userController.user.name,
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                    color: const Color(0xffffffff),
+                  ),
+                );
+              },
             ),
           ],
         ),
@@ -40,10 +57,7 @@ class AppBarMainWidget extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         IconButton(onPressed: () {}, icon: const Icon(FontAwesomeIcons.bell)),
       ],
-      toolbarHeight: 100, // Define a altura da AppBar
+      toolbarHeight: 85, // Define a altura da AppBar
     );
   }
-
-  @override
-  Size get preferredSize => const Size.fromHeight(100); // Ajusta o tamanho preferido
 }

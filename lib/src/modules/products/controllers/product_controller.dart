@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:loveliz_app/src/modules/products/domain/models/product.dart';
+import '../domain/models/product.dart';
 
 class ProductController extends ChangeNotifier {
   bool isLoading = false;
@@ -19,4 +19,26 @@ class ProductController extends ChangeNotifier {
     this.products = products;
     notifyListeners();
   }
+
+  bool isLoadingTopProducts = false;
+  void setLoadingTopProducts(bool value) {
+     isLoadingTopProducts = value;
+    notifyListeners();
+  }
+
+  List<Product> topProducts = [];
+  void setTopProducts(List<Product> products) {
+    topProducts = products;
+    notifyListeners();
+  }
+  
+  String errorMessageTopProducts = '';
+  void setErrorMessageTopProducts(String message) {
+    errorMessageTopProducts = message;
+    notifyListeners();
+  }
+
+  GlobalKey<FormState> createProductForm = GlobalKey<FormState>();
+  GlobalKey<FormState> updateProductForm = GlobalKey<FormState>();
+
 }

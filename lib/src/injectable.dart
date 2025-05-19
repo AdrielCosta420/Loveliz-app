@@ -1,9 +1,10 @@
 import 'package:get_it/get_it.dart';
-import 'package:loveliz_app/src/modules/products/product_injector.dart';
-import 'package:loveliz_app/src/modules/sales/ui/pages/sale_injector.dart';
+import 'modules/products/product_injector.dart';
+import 'modules/sales/sale_injector.dart';
 
 import 'core/core_injector.dart';
 import 'modules/auth/auth_injector.dart';
+import 'modules/user/user_injector.dart';
 
 final injector = GetIt.instance;
 
@@ -12,4 +13,5 @@ void setupInjection() {
   CoreInjector.inject(injector);
   ProductInjector.inject(injector);
   SaleInjector.inject(injector);
+  UserInjector.inject(injector);
 }

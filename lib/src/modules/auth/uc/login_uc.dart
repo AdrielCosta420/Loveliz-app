@@ -4,8 +4,8 @@ import 'package:loveliz_app/src/core/preferences/preferences.dart';
 import 'package:loveliz_app/src/modules/auth/controllers/auth_controller.dart';
 import 'package:loveliz_app/src/modules/auth/repositories/auth_repository.dart';
 
-import '../../../common/asuka/snackbars/app_snackbar.dart';
 import '../../../common/functions/decode_jwt.dart';
+import '../../../common/snackbar/snackbar_custom.dart';
 import '../../../core/providers/app_navigator.dart';
 import '../../../core/routes/app_routes.dart';
 import '../../../injectable.dart';
@@ -23,7 +23,9 @@ class LoginUcImpl implements LoginUc {
   Future<void> call() async {
     controller.setLoading(true);
     try {
-      final response = await _repository.login(credentials: controller.credentials);
+      final response = await _repository.login(
+        credentials: controller.credentials,
+      );
 
       response.fold(
         (failure) {
@@ -34,13 +36,16 @@ class LoginUcImpl implements LoginUc {
           await preferences?.setToken(success);
           controller.setToken(success);
           final map = DecodeJwt.decode(success);
-          controller.setUserRole(map['payload']['role']);
-          AppNavigator.navigateTo(AppRoutes.products);
+          controller.setUserRole(map['role']);
+          controller.setUserId(map['id']);
+          AppNavigator.navigateTo(AppRoutes.home);
         },
       );
     } on Exception catch (e) {
-      AppSnackbar.failure(e.toString());
+      SnackbarCustom.failure(e.toString());
     }
-    controller.setLoading(true);
+    finally {
+      controller.setLoading(false);
+    }
   }
 }

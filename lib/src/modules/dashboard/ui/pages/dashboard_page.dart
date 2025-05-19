@@ -3,16 +3,17 @@ import 'package:flutter/services.dart';
 import 'package:loveliz_app/src/core/routes/app_routes.dart';
 import 'package:loveliz_app/src/injectable.dart';
 import 'package:loveliz_app/src/modules/sales/domain/usecases/get_sales_uc.dart';
-import 'package:loveliz_app/src/modules/sales/ui/controllers/sale_controller.dart';
+import 'package:loveliz_app/src/modules/sales/presentation/controllers/sale_controller.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../../../../common/functions/price_format.dart';
-import '../../../../common/functions/mask_date.dart';
+import '../../../../common/formatters/price_format.dart';
+import '../../../../common/formatters/mask_date.dart';
 import '../../../../common/widgets/app_bar_main_widget.dart';
 import '../../../../common/widgets/loading_widget.dart';
 import '../../../../core/providers/app_navigator.dart';
 import '../../../../core/services/read_qr_code.dart';
 import '../../../auth/controllers/auth_controller.dart';
-import '../../../sales/domain/usecases/get_last_sale_uc.dart';
+import '../widgets/sales_last_widget.dart';
+import '../widgets/top_products_widget.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
@@ -29,16 +30,15 @@ class _DashboardPageState extends State<DashboardPage> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       injector.get<GetSalesUc>().call();
-      injector.get<GetLastSaleUc>().call();
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       appBar: const AppBarMainWidget(
         pageName: 'Dashboard',
+        //TODO chamar rota de user e popular com nome do usuario logado !!!!
         title: 'Olá, Alexia!',
       ),
       body: SingleChildScrollView(
@@ -51,16 +51,16 @@ class _DashboardPageState extends State<DashboardPage> {
             Text.rich(
               TextSpan(
                 text: 'Hoje ',
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  fontWeight: FontWeight.w400,
-                  color: Theme.of(context).colorScheme.primary,
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  // fontWeight: FontWeight.w400,
+                  // color: Theme.of(context).colorScheme.primary,
                 ),
                 children: [
                   TextSpan(
                     text: MaskDate.toAbbreviationForMonth(DateTime.now()),
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: Theme.of(context).colorScheme.primary,
+                      // fontWeight: FontWeight.bold,;
+                      // color: Theme.of(context).colorScheme.primary,
                     ),
                   ),
                 ],
@@ -161,136 +161,66 @@ class _DashboardPageState extends State<DashboardPage> {
             ),
 
             const SizedBox(height: 16),
-            const Divider(),
-            const SizedBox(height: 16),
-            Text(
-              'Última Venda:',
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                fontWeight: FontWeight.w400,
-                fontSize: 16,
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Theme.of(
+                    context,
+                  ).colorScheme.primary.withValues(alpha: 0.2),
+                ),
+                onPressed: () async {
+                  await readQrCode();
+                },
+                label: Text(
+                  'Escanear QR Code',
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: Theme.of(context).colorScheme.primary,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                icon: Icon(
+                  FontAwesomeIcons.qrcode,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
               ),
             ),
-
-            ListenableBuilder(
-              listenable: controller,
-              builder: (_, _) {
-                return controller.isLastSaleLoading
-                    ? const LoadingWidget()
-                    : Card(
-                      child: Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Icon(
-                              FontAwesomeIcons.bagShopping,
-                              color: Theme.of(context).colorScheme.primary,
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Text(
-                                  controller.lastSale.product.model,
-                                  style: Theme.of(
-                                    context,
-                                  ).textTheme.bodyMedium?.copyWith(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                const SizedBox(height: 4),
-
-                                Text(
-                                  PriceFormat.format(
-                                    controller.lastSale.totalPrice,
-                                  ),
-
-                                  style: Theme.of(context).textTheme.bodyMedium
-                                      ?.copyWith(fontWeight: FontWeight.bold),
-                                ),
-
-                                const SizedBox(height: 4),
-                                Text(
-                                  MaskDate.toAbbreviationForMonth(
-                                    controller.lastSale.createdAt,
-                                  ),
-                                  style:
-                                      Theme.of(
-                                        context,
-                                      ).textTheme.bodySmall?.copyWith(),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-              },
+            const SizedBox(height: 16),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton.icon(
+                onPressed:
+                    () => AppNavigator.navigateTo(AppRoutes.registerSale),
+                label: Text(
+                  'Registrar nova Venda',
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                icon: const Icon(FontAwesomeIcons.plus),
+              ),
             ),
             const SizedBox(height: 24),
-            // const Spacer(),
-            GestureDetector(
-              onTap: () async {
-                await readQrCode();
-              },
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Center(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Text(
-                        // Opções de frases mais simples e práticas:
-                        // 'Escaneie para registrar venda',
-                        // 'Toque para escanear produto',
-                        // 'Escaneie e venda rápido',
-                        // 'Escanear para nova venda',
-                        // 'Toque para vender agora',
-                        // 'Registrar venda via QR Code',
-                        // 'Escanear código do produto',
-                        'Registrar venda via QR Code',
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 16,
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  Image.asset(
-                    'assets/images/qrcode.png',
-                    width: 70,
-                    height: 70,
-                  ),
-                ],
-              ),
+            Text(
+              'Produtos mais Vendidos',
+              style: Theme.of(
+                context,
+              ).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 20),
-            Center(
-              child: Text(
-                'ou',
-                style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 16,
-                ),
-              ),
+            const SizedBox(height: 8),
+            const TopProductsWidget(),
+            const SizedBox(height: 24),
+            Text(
+              'Vendas Recentes',
+              style: Theme.of(
+                context,
+              ).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 12),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 16),
-              child: SizedBox(
-                width: double.infinity,
-                child: TextButton(
-                  onPressed:
-                      () => AppNavigator.navigateTo(AppRoutes.registerSale),
+            const SizedBox(height: 8),
 
-                  child: const Text('Registrar nova venda'),
-                ),
-              ),
-            ),
+            const SalesLastWidget(),
+            const SizedBox(height: 24),
           ],
         ),
       ),

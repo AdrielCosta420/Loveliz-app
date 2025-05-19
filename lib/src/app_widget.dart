@@ -1,3 +1,4 @@
+import 'package:asuka/asuka.dart';
 import 'package:flutter/material.dart';
 import 'package:loveliz_app/src/core/routes/app_routes.dart';
 import 'package:loveliz_app/src/core/providers/app_navigator.dart';
@@ -17,6 +18,7 @@ class AppWidget extends StatelessWidget {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.lightTheme,
       themeMode: ThemeMode.system,
+      builder: Asuka.builder,
     );
   }
 }

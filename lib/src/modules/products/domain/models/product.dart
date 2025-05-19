@@ -2,29 +2,34 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
+import '../../../../common/enums/product_sizes_enum.dart';
+
 class Product extends ChangeNotifier {
   String id;
   double price;
   String model;
   String color;
-  String size;
+  ProductSizesEnum size;
   int quantity;
-  int quantityByModel;
-  int quantityByColor;
+  String collectionId;
+  String collectionName;
   DateTime? createdAt;
   DateTime? updatedAt;
-
+  int totalSold;
+  bool active;
   Product({
     this.id = '',
     this.price = 0.0,
     this.model = '',
     this.color = '',
-    this.size = '',
+    this.size = ProductSizesEnum.padrao,
     this.quantity = 0,
-    this.quantityByModel = 0,
-    this.quantityByColor = 0,
+    this.collectionId = '',
+    this.collectionName = '',
     this.createdAt,
     this.updatedAt,
+    this.totalSold = 0,
+    this.active = true,
   });
 
   void setId(String id) {
@@ -47,7 +52,7 @@ class Product extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setSize(String size) {
+  void setSize(ProductSizesEnum size) {
     this.size = size;
     notifyListeners();
   }
@@ -57,13 +62,23 @@ class Product extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setQuantityByModel(int quantityByModel) {
-    this.quantityByModel = quantityByModel;
+  void setTotalSold(int value) {
+    value = totalSold;
     notifyListeners();
   }
 
-  void setQuantityByColor(int quantityByColor) {
-    this.quantityByColor = quantityByColor;
+  void setCollectionId(String collectionId) {
+    this.collectionId = collectionId;
+    notifyListeners();
+  }
+
+  void setCollectionName(String collectionName) {
+    this.collectionName = collectionName;
+    notifyListeners();
+  }
+
+  void setActive(bool active) {
+    this.active = active;
     notifyListeners();
   }
 
@@ -73,12 +88,14 @@ class Product extends ChangeNotifier {
       'price': price,
       'model': model,
       'color': color,
-      'size': size,
+      'size': size.name,
       'quantity': quantity,
-      'quantityByModel': quantityByModel,
-      'quantityByColor': quantityByColor,
+      'collectionId': collectionId,
+      'collectionName': collectionName,
       'createdAt': createdAt?.toIso8601String(),
       'updatedAt': updatedAt?.toIso8601String(),
+      'active': active,
+      
     };
   }
 
@@ -88,12 +105,18 @@ class Product extends ChangeNotifier {
       price: double.tryParse(map['price'].toString()) ?? 0.0,
       model: map['model'] ?? '',
       color: map['color'] ?? '',
-      size: map['size'] ?? '',
+      size: ProductSizesEnum.values.singleWhere(
+        (element) => element.name == map['size'],
+      ),
       quantity: map['quantity'] ?? 0,
-      quantityByModel: map['quantityByModel'] ?? 0,
-      quantityByColor: map['quantityByColor'] ?? 0,
-      createdAt: map['createdAt'] != null ? DateTime.parse(map['createdAt']) : null,
-      updatedAt: map['updatedAt'] != null ? DateTime.parse(map['updatedAt']) : null,
+      totalSold: map['totalSold'] ?? 0,
+      collectionId: map['collectionId'] ?? '',
+      collectionName: map['collectionName'] ?? '',
+      active: map['active'] ?? true,
+      createdAt:
+          map['createdAt'] != null ? DateTime.parse(map['createdAt']) : null,
+      updatedAt:
+          map['updatedAt'] != null ? DateTime.parse(map['updatedAt']) : null,
     );
   }
 
@@ -107,12 +130,15 @@ class Product extends ChangeNotifier {
       price: 0.0,
       model: '',
       color: '',
-      size: '',
+      size: ProductSizesEnum.padrao,
       quantity: 0,
-      quantityByModel: 0,
-      quantityByColor: 0,
+      totalSold: 0,
       createdAt: null,
       updatedAt: null,
+      active: true,
+      collectionId: '',
+      collectionName: '',
+
     );
   }
 }

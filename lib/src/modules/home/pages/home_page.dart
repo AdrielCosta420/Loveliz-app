@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../dashboard/ui/pages/dashboard_page.dart';
-import '../../products/presentation/pages/products_page.dart';
+import '../../products/presentation/pages/collections_product_page.dart';
+import '../../sales/presentation/pages/sales_page.dart';
 // Removed unused import
 
 class HomePage extends StatefulWidget {
@@ -28,8 +29,8 @@ class _HomePageState extends State<HomePage> {
           },
           children: const [
             DashboardPage(),
-            ProductsPage(),
-            Text('Vendas'),
+            CollectionsProductPage(),
+            SalesPage(),
             Text('Relatórios'),
           ],
         ),

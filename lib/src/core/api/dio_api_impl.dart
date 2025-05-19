@@ -59,10 +59,11 @@ class DioApiImpl implements ApiRequest {
   Future<ApiResponse> get({
     required String path,
     bool disableToken = false,
+     Map<String, dynamic>? queryParameters
   }) async {
     try {
       final response = await _dio.get(
-        path,
+        path,queryParameters: queryParameters,
         options: Options(
           headers: await _getHeaders(disableToken: disableToken),
         ),
@@ -126,17 +127,35 @@ class DioApiImpl implements ApiRequest {
   }
   
   @override
-  Future<dynamic> getList({required String path, bool disableToken = false}) async {
+  Future<dynamic> getList({required String path, bool disableToken = false,  Map<String, dynamic>? queryParameters}) async {
     try {
       final response = await _dio.get(
         path,
+        queryParameters: queryParameters,
         options: Options(
           headers: await _getHeaders(disableToken: disableToken),
+          
         ),
       );
       return response.data;
     } on DioException catch (e) {
       throw ApiException(e.message ?? 'Unkwon error', e.response?.statusCode);
+    } on Exception catch (e) {
+      throw ApiException(e.toString(), 500);
+    }
+  }
+  
+  @override
+  Future<ApiResponse> patch({required String path, required Map<String, dynamic> body}) async {
+    try {
+      final response = await _dio.patch(
+        path,
+        data: body,
+        options: Options(headers: await _getHeaders()),
+      );
+      return response.data;
+    } on DioException catch (e) {
+      throw ApiException(e.response?.data['error'], e.response?.statusCode);
     } on Exception catch (e) {
       throw ApiException(e.toString(), 500);
     }

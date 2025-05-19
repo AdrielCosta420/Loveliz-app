@@ -13,7 +13,7 @@ class SaleServiceImpl implements SaleService {
     try {
       final response = await api.getList(path: '/sales');
       final list = <ApiResponse>[];
-      for (var sale in response) {
+      for (var sale in response['sales']) {
         list.add(sale as Map<String, dynamic>);
       }
       return list;
@@ -36,9 +36,14 @@ class SaleServiceImpl implements SaleService {
   }
   
   @override
-  Future<ApiResponse> getLastSale() async {
+  Future<List<ApiResponse>> getLastSales() async {
     try {
-      return await api.get(path: '/sale-last');
+      final response = await api.getList(path: '/sales-last');
+      final list = <ApiResponse>[];
+      for (var sale in response) {
+        list.add(sale as Map<String, dynamic>);
+      }
+      return list;
     } on ApiException catch (e) {
       throw ApiException(e.message, e.statusCode);
     } catch (e) {
