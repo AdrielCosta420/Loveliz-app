@@ -1,9 +1,9 @@
+import '../repositories/product_repository.dart';
 import 'get_collections_product_uc.dart';
 
 import '../../../../common/snackbar/snackbar_custom.dart';
 import '../../../../injectable.dart';
 import '../../controllers/collection_product_controller.dart';
-import '../../repositories/product_repository.dart';
 
 abstract interface class CreateCollectionProductUc {
   Future<void> call();

@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'modules/products/product_injector.dart';
+import 'modules/reports/report_inject.dart';
 import 'modules/sales/sale_injector.dart';
 
 import 'core/core_injector.dart';
@@ -14,4 +15,5 @@ void setupInjection() {
   ProductInjector.inject(injector);
   SaleInjector.inject(injector);
   UserInjector.inject(injector);
+  ReportInjector.inject(injector);
 }

@@ -3,7 +3,7 @@ import 'get_collections_product_uc.dart';
 import '../../../../common/snackbar/snackbar_custom.dart';
 import '../../../../injectable.dart';
 import '../../controllers/collection_product_controller.dart';
-import '../../repositories/product_repository.dart';
+import '../repositories/product_repository.dart';
 
 abstract interface class UpdateCollectionProductUc {
   Future<void> call();
@@ -16,8 +16,6 @@ class UpdateCollectionProductUcImpl implements UpdateCollectionProductUc {
 
   @override
   Future<void> call() async {
-
-
     final response = await repository.updateCollectionProduct(
       id: controller.collection.id,
       name: controller.collection.name,
@@ -27,6 +25,5 @@ class UpdateCollectionProductUcImpl implements UpdateCollectionProductUc {
       SnackbarCustom.success('Coleção atualizada.', title: 'Sucesso');
       getCollectionsProductUc.call();
     });
-
   }
 }

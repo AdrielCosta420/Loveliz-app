@@ -1,8 +1,6 @@
-
-
 import '../../../../injectable.dart';
 import '../../controllers/collection_product_controller.dart';
-import '../../repositories/product_repository.dart';
+import '../repositories/product_repository.dart';
 
 abstract interface class GetProductsByCollectionUc {
   Future<void> call();

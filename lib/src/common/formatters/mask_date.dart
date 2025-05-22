@@ -34,4 +34,8 @@ sealed class MaskDate {
       return dateFormat.format(date);
     }
   }
+
+  static String formatDateForMonth(DateTime date) {
+    return DateFormat.MMM('pt_BR').format(date).toUpperCase();
+  }
 }

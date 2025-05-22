@@ -5,7 +5,7 @@ import 'get_products_by_collection_uc.dart';
 import '../../controllers/product_controller.dart';
 
 import '../../../../injectable.dart';
-import '../../repositories/product_repository.dart';
+import '../repositories/product_repository.dart';
 
 abstract interface class CreateProductUc {
   Future<void> call();

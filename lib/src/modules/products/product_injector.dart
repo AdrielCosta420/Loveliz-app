@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'controllers/collection_product_controller.dart';
+import 'domain/repositories/product_repository.dart';
 import 'domain/uc/create_collection_product_uc.dart';
 import 'domain/uc/create_product_uc.dart';
 import 'domain/uc/get_collections_product_uc.dart';

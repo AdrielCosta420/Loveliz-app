@@ -1,7 +1,8 @@
 import '../../../../common/snackbar/snackbar_custom.dart';
 import '../../../../injectable.dart';
 import '../../controllers/product_controller.dart';
-import '../../repositories/product_repository.dart';
+import '../repositories/product_repository.dart';
+
 import 'get_products_by_collection_uc.dart';
 
 abstract interface class UpdateProductUc {

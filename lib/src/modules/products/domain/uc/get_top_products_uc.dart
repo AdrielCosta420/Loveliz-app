@@ -1,6 +1,6 @@
 import '../../../../injectable.dart';
 import '../../controllers/product_controller.dart';
-import '../../repositories/product_repository.dart';
+import '../repositories/product_repository.dart';
 
 abstract interface class GetTopProductsUc {
   Future<void> call();

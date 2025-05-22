@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../dashboard/ui/pages/dashboard_page.dart';
 import '../../products/presentation/pages/collections_product_page.dart';
+import '../../reports/presentation/pages/reports_page.dart';
 import '../../sales/presentation/pages/sales_page.dart';
 // Removed unused import
 
@@ -31,7 +32,7 @@ class _HomePageState extends State<HomePage> {
             DashboardPage(),
             CollectionsProductPage(),
             SalesPage(),
-            Text('Relatórios'),
+            ReportsPage(),
           ],
         ),
       ),

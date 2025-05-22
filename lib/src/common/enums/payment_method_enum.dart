@@ -40,8 +40,10 @@ extension PaymentMethodEnumExtension on PaymentMethodEnum {
       case PaymentMethodEnum.dinheiro:
         return Colors.green;
       case PaymentMethodEnum.credito:
+        return Colors.blue;
       case PaymentMethodEnum.debito:
-        return const Color.fromARGB(255, 223, 177, 42);
+        return const Color(0XFFdfe300);
+      // return const Color.fromARGB(255, 223, 177, 42);
       case PaymentMethodEnum.outros:
         return Colors.grey;
     }
