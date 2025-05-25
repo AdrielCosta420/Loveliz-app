@@ -1,7 +1,7 @@
 // import 'dart:typed_data';
 import 'dart:typed_data';
 
-import 'package:loveliz_app/src/core/api/api_exception.dart';
+import 'api_exception.dart';
 
 import '../../common/typedef/typedef.dart';
 

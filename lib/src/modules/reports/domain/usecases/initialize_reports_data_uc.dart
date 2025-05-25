@@ -12,7 +12,7 @@ class InitializeReportsDataUcImpl implements InitializeReportsDataUc {
   final ReportController controller = injector.get();
   @override
   Future<void> call() async {
-    await Future.value([
+    await Future.wait([
       _getSummaryReportUc(),
       _getSalesByMonthUc(),
       _getSalesByProductUc(),
