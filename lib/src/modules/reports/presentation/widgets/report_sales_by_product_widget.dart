@@ -66,7 +66,6 @@ class _ReportSalesByProductWidgetState
                         BarChartData(
                           maxY: maxYValue * 1.15,
                           backgroundColor: const Color(0xFF545675),
-                          // backgroundColor: const Color(0xffffedff),
                           gridData: FlGridData(
                             show: true,
                             drawHorizontalLine: true,
@@ -93,8 +92,7 @@ class _ReportSalesByProductWidgetState
                                             .toDouble(),
                                     width: 15,
 
-                                    color: Color(0xffffa4c4),
-                                    // Theme.of(context).colorScheme.primary,
+                                    color: const Color(0xffffa4c4),
                                   ),
                                 ],
                               );
@@ -146,7 +144,6 @@ class _ReportSalesByProductWidgetState
                               ),
                             ),
                           ),
-                          // backgroundColor: const Color(0xffFAFAFC),
                           borderData: FlBorderData(
                             show: true,
                             border: Border.all(
