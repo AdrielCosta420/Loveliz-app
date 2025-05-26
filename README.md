@@ -84,3 +84,42 @@ O app conta com um sistema de autenticação segura baseada em JWT (JSON Web Tok
 | Inteligência | Python, LangChain, Flask                    |
 | Gráficos     | fl_chart (Flutter)                          |
 | Integração   | API RESTful entre Node.js ↔ Python ↔ Flutter |
+
+### 📸 Screenshots
+#### Login
+<p align="center">
+  <img src="assets/screenshots/login.jpg" alt="Login"  height="500px" style="margin-right: 10px;" />
+</p>
+
+#### Dashboard
+<p align="center">
+  <img src="assets/screenshots/dashboard.jpg" alt="dashboard" height="500px" style="margin-right: 10px;" />
+  <img src="assets/screenshots/dashboard-2.jpg" alt="dashboard" height="500px" style="margin-right: 10px;"  />
+</p>
+
+#### Produtos
+<p align="start">
+  <img src="assets/screenshots/collections.jpg" alt="coleções"  height="500px" style="margin-right: 10px;"/>
+  <img src="assets/screenshots/products.jpg" alt="produtos"  height="500px" style="margin-right: 10px;" />
+   <img src="assets/screenshots/add-product.jpg" alt="add produto"  height="500px" style="margin-right: 10px;" />
+</p>
+
+#### Vendas
+<p align="start">
+  <img src="assets/screenshots/sales.jpg" alt="sales"  height="500px" style="margin-right: 10px;" />
+  <img src="assets/screenshots/details-sale.jpg" alt="detalhes"  height="500px" style="margin-right: 10px;" />
+</p>
+
+#### Relatórios
+<p align="start">
+  <img src="assets/screenshots/reports.jpg" alt="relatorios"  height="500px" style="margin-right: 10px;" />
+  <img src="assets/screenshots/reports2.jpg" alt="relatorios"  height="500px" style="margin-right: 10px;" />
+  <img src="assets/screenshots/reports-3.jpg" alt="relatorios"  height="500px" style="margin-right: 10px;" />
+</p>
+
+#### Assistente Virtual (IA)
+<p align="start">
+  <img src="assets/screenshots/chat-1.jpg" alt="chat"  height="500px" style="margin-right: 10px;" />
+  <img src="assets/screenshots/chat-2.jpg" alt="chat"  height="500px" style="margin-right: 10px;" />
+  <img src="assets/screenshots/chat-3.jpg" alt="chat"  height="500px" style="margin-right: 10px;" />
+</p>
