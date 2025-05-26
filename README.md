@@ -56,6 +56,8 @@ O app conta com um sistema de autenticação segura baseada em JWT (JSON Web Tok
    - Vendas por forma de pagamento
 
    - Crescimento de vendas
+     
+   - Vendas por vendedores
 
    - Comparativos
 
