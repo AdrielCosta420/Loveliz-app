@@ -46,6 +46,9 @@ class _ReportSalesByProductWidgetState
         ListenableBuilder(
           listenable: controller,
           builder: (_, __) {
+            final maxYValue = controller.reportSalesByProduct
+                .map((e) => e.totalSold.toDouble())
+                .reduce((a, b) => a > b ? a : b);
             return SizedBox(
               height: MediaQuery.of(context).size.height * 0.4,
               child:
@@ -61,7 +64,9 @@ class _ReportSalesByProductWidgetState
                       )
                       : BarChart(
                         BarChartData(
-                          backgroundColor: const Color(0xffffedff),
+                          maxY: maxYValue * 1.15,
+                          backgroundColor: const Color(0xFF545675),
+                          // backgroundColor: const Color(0xffffedff),
                           gridData: FlGridData(
                             show: true,
                             drawHorizontalLine: true,
@@ -69,7 +74,7 @@ class _ReportSalesByProductWidgetState
                             verticalInterval: 1,
                             getDrawingHorizontalLine: (value) {
                               return const FlLine(
-                                color: Color(0xffF4F4F6),
+                                color: Color(0xff808080),
                                 strokeWidth: 0.5,
                               );
                             },
@@ -88,8 +93,8 @@ class _ReportSalesByProductWidgetState
                                             .toDouble(),
                                     width: 15,
 
-                                    color:
-                                        Theme.of(context).colorScheme.primary,
+                                    color: Color(0xffffa4c4),
+                                    // Theme.of(context).colorScheme.primary,
                                   ),
                                 ],
                               );

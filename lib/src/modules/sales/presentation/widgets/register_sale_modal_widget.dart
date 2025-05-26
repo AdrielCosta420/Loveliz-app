@@ -249,23 +249,26 @@ class _RegisterSaleModalWidgetState extends State<RegisterSaleModalWidget> {
                 const SizedBox(height: 24),
 
                 Center(
-                  child: ElevatedButton.icon(
-                    onPressed: () {
-                      if (saleController.registerSaleFormKey.currentState
-                              ?.validate() ??
-                          false) {
-                        registerSaleUc.call();
-                        Navigator.pop(context);
-                      }
-                    },
-                    icon: const Icon(Icons.check),
-                    label: const Text('Registrar venda'),
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 24,
-                        vertical: 14,
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton.icon(
+                      onPressed: () {
+                        if (saleController.registerSaleFormKey.currentState
+                                ?.validate() ??
+                            false) {
+                          registerSaleUc.call();
+                          Navigator.pop(context);
+                        }
+                      },
+                      icon: const Icon(Icons.check),
+                      label: const Text('Registrar venda'),
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 24,
+                          vertical: 14,
+                        ),
+                        textStyle: const TextStyle(fontSize: 16),
                       ),
-                      textStyle: const TextStyle(fontSize: 16),
                     ),
                   ),
                 ),

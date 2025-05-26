@@ -78,6 +78,8 @@ class ReportController extends ChangeNotifier {
     notifyListeners();
   }
 
+  
+
   double getYAxisInterval(List<ReportSalesByProduct> data) {
     final maxValue =
         data.map((e) => e.totalSold).reduce((a, b) => a > b ? a : b).toDouble();

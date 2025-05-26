@@ -66,7 +66,7 @@ class _ReportSalesByMonthWidgetState extends State<ReportSalesByMonthWidget> {
             // Valor máximo real
             final maxValue = data.map((e) => e['total'] as double).reduce(max);
 
-            // Arredonda pro próximo "degrau" bonito, com uma folga de ~20%
+            // Arredonda pro próximo "degrau", com uma folga de ~20%
             double getRoundedMaxY(double value) {
               if (value == 0) return 10;
 
@@ -89,13 +89,6 @@ class _ReportSalesByMonthWidgetState extends State<ReportSalesByMonthWidget> {
                 color: const Color(0xFF545675),
                 // color: const Color(0xFF1E1E2C),
                 borderRadius: BorderRadius.circular(20),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.3),
-                    blurRadius: 10,
-                    offset: const Offset(0, 4),
-                  ),
-                ],
               ),
               height: MediaQuery.of(context).size.height * 0.5,
               child: SingleChildScrollView(
